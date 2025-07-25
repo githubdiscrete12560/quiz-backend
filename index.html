@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple MCQ Quiz</title>
+  <style>
+    body { font-family: sans-serif; max-width: 500px; margin: 2em auto; }
+    .option { margin: 1em 0; }
+    #result { margin: 1em 0; color: green; }
+  </style>
+</head>
+<body>
+  <h1>Quiz</h1>
+  <form id="quizForm">
+    <p>What is the capital of France?</p>
+    <div class="option"><input type="radio" name="answer" value="A" required> A) Berlin</div>
+    <div class="option"><input type="radio" name="answer" value="B"> B) Madrid</div>
+    <div class="option"><input type="radio" name="answer" value="C"> C) Paris</div>
+    <div class="option"><input type="radio" name="answer" value="D"> D) Rome</div>
+    <input type="text" id="name" placeholder="Your name" required />
+    <button type="submit">Submit</button>
+  </form>
+  <div id="result"></div>
+
+  <script>
+    document.getElementById('quizForm').onsubmit = async function(e) {
+      e.preventDefault();
+      const form = e.target;
+      const name = document.getElementById('name').value.trim();
+      const answer = form.answer.value;
+      const isCorrect = answer === 'C';
+
+      document.getElementById('result').innerText = isCorrect
+        ? 'Correct! 🎉'
+        : 'Incorrect. Try again.';
+
+      // Send result to server (your deployed Railway backend)
+      //quiz-backend-production-2425.up.railway.app
+      await fetch('https://quiz-backend-production-2425.up.railway.app/submit', {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({ name, answer, isCorrect })
+      });
+    }
+  </script>
+</body>
+</html>
