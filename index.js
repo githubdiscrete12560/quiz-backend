@@ -7,8 +7,8 @@ app.use(cors());
 app.use(express.json());
 
 // Set these from your Supabase project
-const SUPABASE_URL = 'https://YOUR-SUPABASE-URL.supabase.co';
-const SUPABASE_KEY = 'YOUR-SUPABASE-ANON-KEY';
+const SUPABASE_URL = 'https://kxbhmwlqlykdyaeeblld.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt4Ymhtd2xxbHlrZHlhZWVibGxkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTM0MTQzNzgsImV4cCI6MjA2ODk5MDM3OH0.ZkfAoE9Ap1hCkdL_1TZU-8zCqMZF7DFSptGBq3VVeY4';
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
 // Endpoint to receive quiz result
